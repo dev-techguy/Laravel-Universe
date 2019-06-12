@@ -1,9 +1,12 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
+
 use App\User;
-use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Support\Str;
+use Webpatser\Uuid\Uuid;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +21,7 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
+        'id' => Uuid::generate()->string,
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
