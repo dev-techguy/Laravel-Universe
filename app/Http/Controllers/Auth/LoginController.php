@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SystemController;
+use Exception;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use Illuminate\View\View;
 
 class LoginController extends Controller {
     /*
@@ -51,5 +56,42 @@ class LoginController extends Controller {
             // Authentication passed...
             return redirect()->intended($this->redirectTo);
         }
+    }
+
+    /**
+     * Show the page for logging in the admin
+     * @return Factory|View
+     */
+    public function getAdminLoginPage() {
+        return view('auth.admin.login');
+    }
+
+    /**
+     * Authenticate the system admin
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function authenticateAdmin() {
+        $this->validate(request(), [
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        // Set the authentication credentials
+        $credentials = request(['email', 'password']);
+
+        // Try to authenticate the admin
+        if (!auth()->guard('admin')->attempt($credentials)) {
+
+            //log this
+            SystemController::log($credentials, 'success', 'admin-login-error');
+
+            return redirect()->back()->with('error', 'These credentials do not match our records.')->withInput(request()->except('password'));
+        }
+
+        //log this
+        SystemController::log($credentials, 'success', 'admin-login');
+
+        return redirect()->route('admin.home');
     }
 }
