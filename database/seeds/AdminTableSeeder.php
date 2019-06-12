@@ -18,8 +18,8 @@ class AdminTableSeeder extends Seeder {
             [
                 'id' => Uuid::generate()->string,
                 'name' => 'admin',
-                'email' => 'admin@test',
-                'password' => Hash::make('admin@test'),
+                'email' => 'admin@test.com',
+                'password' => Hash::make('admin@test.com'),
             ],
         ];
 
