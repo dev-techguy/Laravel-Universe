@@ -16,7 +16,7 @@ $userLatestMails = Mv::latestNotifications();
 
     <title>{{ config('app.name', env('APP_NAME')) }}</title>
     <!--favicon-->
-    <link rel="icon" href="#" type="image/x-icon">
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toggle.css') }}">
@@ -87,7 +87,7 @@ $userLatestMails = Mv::latestNotifications();
             {{--user profile--}}
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i><img src="{{ asset('img/avatar.png') }}" alt="" class="img-circle"
+                    <i><img src="{{ asset('img/logo.png') }}" alt="" class="img-circle"
                             style="height: 30px;width: 30px;"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -116,7 +116,7 @@ $userLatestMails = Mv::latestNotifications();
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('home') }}" class="brand-link">
-            <img src="{{ asset('img/avatar.png') }}" alt="Logo" class="brand-image img-circle elevation-3"
+            <img src="{{ asset('img/logo.png') }}" alt="Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">{{ env('APP_NAME') }}</span>
         </a>
@@ -126,7 +126,7 @@ $userLatestMails = Mv::latestNotifications();
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset('img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ asset('img/logo.png') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="{{ route('home') }}" class="d-block">{{ auth()->user()->name }}</a>

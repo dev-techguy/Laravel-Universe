@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', env('APP_NAME')) }}</title>
 
+    <!--favicon-->
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
