@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+
+
+use MV\Notification\Mv;
+
+$userLatestMails = Mv::latestNotifications();
+?>
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -71,9 +78,9 @@
             </li>
             <!-- Messages Notifications -->
             <li class="nav-item dropdown">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('user.latest.mailbox') }}">
                     <i class="fa fa-comments-o"></i>
-                    <span class="badge badge-danger navbar-badge">0</span>
+                    <span class="badge badge-danger navbar-badge">{{ number_format(count($userLatestMails)) }}</span>
                 </a>
             </li>
 
@@ -89,7 +96,7 @@
                     <div class="dropdown-item">
                         <!-- Message Start -->
                         <div class="clearfix">
-                            <a href="#}" class="btn btn-default btn-md pull-left bg-primary"
+                            <a href="#" class="btn btn-default btn-md pull-left bg-primary"
                                style="margin-left: 20px; margin-bottom: 20px; margin-top: 20px;"><strong>My
                                     Profile</strong></a>
                             <a href="{{ route('user.logout') }}" class="btn btn-danger btn-md pull-right"
@@ -165,10 +172,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('user.latest.mailbox') }}" class="nav-link">
                             <i class="fa fa-inbox nav-icon"></i>
                             <p>Inbox
-                                <span class="badge badge-danger right">2</span>
+                                <span
+                                    class="badge badge-danger right">{{ number_format(count($userLatestMails)) }}</span>
                             </p>
                         </a>
                     </li>

@@ -3,8 +3,10 @@
 namespace App;
 
 use App\Uuids\Uuids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use MV\Notification\Models\Notification;
 
 class User extends Authenticatable {
     use Notifiable, Uuids;
@@ -45,4 +47,12 @@ class User extends Authenticatable {
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * get user notification
+     * @return HasMany
+     */
+    public function notification() {
+        return $this->hasMany(Notification::class);
+    }
 }

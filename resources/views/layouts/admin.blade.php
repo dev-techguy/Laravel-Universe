@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<?php
+
+use MV\Notification\Mv;
+
+$adminLatestMails = Mv::latestNotifications(true);
+?>
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -71,9 +77,9 @@
             </li>
             <!-- Messages Notifications -->
             <li class="nav-item dropdown">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.latest.mailbox') }}">
                     <i class="fa fa-comments-o"></i>
-                    <span class="badge badge-danger navbar-badge">0</span>
+                    <span class="badge badge-danger navbar-badge">{{ number_format(count($adminLatestMails)) }}</span>
                 </a>
             </li>
 
@@ -164,10 +170,11 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.latest.mailbox') }}" class="nav-link">
                             <i class="fa fa-inbox nav-icon"></i>
                             <p>Inbox
-                                <span class="badge badge-danger right">2</span>
+                                <span
+                                    class="badge badge-danger right">{{ number_format(count($adminLatestMails)) }}</span>
                             </p>
                         </a>
                     </li>

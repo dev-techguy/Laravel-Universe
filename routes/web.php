@@ -30,6 +30,42 @@ Route::group([
 ], function () {
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('logout', 'HomeController@logout')->name('user.logout');
+
+    /**
+     * ------------------------
+     * start of notifications
+     * routes for user
+     * -------------------------
+     */
+    Route::group([
+        'prefix' => 'mailbox',
+    ], function () {
+        Route::get('view', [
+            'uses' => 'HomeController@latestMailBox',
+            'as' => 'user.latest.mailbox',
+        ]);
+        Route::get('read/{id}', [
+            'uses' => 'HomeController@readMailBox',
+            'as' => 'user.read.mailbox',
+        ]);
+        Route::post('delete/single', [
+            'uses' => 'HomeController@deleteSingleMail',
+            'as' => 'user.delete.single.mailbox',
+        ]);
+        Route::get('all', [
+            'uses' => 'HomeController@allMailBox',
+            'as' => 'user.all.mailbox',
+        ]);
+        Route::get('delete/all', [
+            'uses' => 'HomeController@deleteAllMails',
+            'as' => 'user.delete.all.mailbox',
+        ]);
+    });
+    /**
+     * ----------------------------------
+     * End of system notifications routes
+     * ----------------------------------
+     */
 });
 /**
  * -------------------------
@@ -86,6 +122,43 @@ Route::group([
         'uses' => 'AdminController@logout',
         'as' => 'admin.logout',
     ]);
+
+
+    /**
+     * ------------------------
+     * start of notifications
+     * routes for user
+     * -------------------------
+     */
+    Route::group([
+        'prefix' => 'mailbox',
+    ], function () {
+        Route::get('view', [
+            'uses' => 'AdminController@latestMailBox',
+            'as' => 'admin.latest.mailbox',
+        ]);
+        Route::get('read/{id}', [
+            'uses' => 'AdminController@readMailBox',
+            'as' => 'admin.read.mailbox',
+        ]);
+        Route::post('delete/single', [
+            'uses' => 'AdminController@deleteSingleMail',
+            'as' => 'admin.delete.single.mailbox',
+        ]);
+        Route::get('all', [
+            'uses' => 'AdminController@allMailBox',
+            'as' => 'admin.all.mailbox',
+        ]);
+        Route::get('delete/all', [
+            'uses' => 'AdminController@deleteAllMails',
+            'as' => 'admin.delete.all.mailbox',
+        ]);
+    });
+    /**
+     * ----------------------------------
+     * End of system notifications routes
+     * ----------------------------------
+     */
 });
 /**
  * --------------------------------

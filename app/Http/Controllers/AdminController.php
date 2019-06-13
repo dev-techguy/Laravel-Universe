@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\IdRequest;
+use App\Http\Requests\RequestID;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
+use MV\Notification\Mv;
 
 class AdminController extends Controller {
     /**
@@ -85,6 +88,59 @@ class AdminController extends Controller {
             , 'success', 'admin-password-change');
 
         return redirect()->back()->with('success', 'You have successfully changed your password.');
+    }
+
+
+    /**
+     * admin mails/notifications
+     * @return Factory|View
+     */
+    public function latestMailBox() {
+        return view('admin.mailbox.latestMail', [
+            'latestMails' => Mv::latestNotifications(true),
+        ]);
+    }
+
+    /**
+     * read mail
+     * @param string $notification_id
+     * @return Factory|View
+     */
+    public function readMailBox(string $notification_id) {
+        return view('admin.mailbox.readMail', [
+            'fetchMail' => Mv::readNotification($notification_id, true),
+        ]);
+    }
+
+    /**
+     * admin delete single mail
+     * @param RequestID $request
+     * @return RedirectResponse
+     */
+    public function deleteSingleMail(RequestID $request) {
+        if (Mv::deleteSingleNotification($request->id, true))
+            return redirect()->route('admin.latest.mailbox')->with('success', 'Mail deleted successfully.');
+        return redirect()->back()->with('error', 'Failed to delete notification.');
+    }
+
+    /**
+     * fetch all notifications
+     * @return Factory|View
+     */
+    public function allMailBox() {
+        return view('admin.mailbox.allMail', [
+            'allMails' => Mv::allNotifications(true),
+        ]);
+    }
+
+    /**
+     * delete all mails
+     * @return RedirectResponse
+     */
+    public function deleteAllMails() {
+        if (Mv::deleteAllNotifications(true))
+            return redirect()->route('admin.latest.mailbox')->with('success', 'Notification(s) deleted successfully.');
+        return redirect()->route('admin.latest.mailbox')->with('error', 'Failed to delete notification(s).');
     }
 
     /**
