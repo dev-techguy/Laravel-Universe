@@ -83,17 +83,24 @@
 
     <div class="content">
         <div class="title m-b-md">
-            Laravel
+            <img src="{{ asset('img/logo.png') }}" alt="" style="height: 100px">
+            <br>
+            {{ config('app.name') }}
         </div>
 
         <div class="links">
-            <a href="https://laravel.com/docs">Docs</a>
-            <a href="https://laracasts.com">Laracasts</a>
-            <a href="https://laravel-news.com">News</a>
-            <a href="https://blog.laravel.com">Blog</a>
-            <a href="https://nova.laravel.com">Nova</a>
-            <a href="https://forge.laravel.com">Forge</a>
-            <a href="https://github.com/laravel/laravel">GitHub</a>
+            <p>This is a laravel demo app, for testing purposes please use this credentials</p>
+            <ul type="none">
+                <li>Lecturer Credentials</li>
+                <li><a href="{{ route('admin.login') }}">Lecturer Login</a> <br>Use <b>Email/Password</b> <i>(lecturer@test.com)</i>
+                </li>
+            </ul>
+            <br>
+            <ul type="none">
+                <li>Student Credentials</li>
+                <li><a href="{{ route('login') }}">Student Login</a> <br>Use <b>Email/Password</b>
+                    <i>(student@test.com)</i></li>
+            </ul>
         </div>
     </div>
 </div>
