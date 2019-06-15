@@ -101,6 +101,9 @@
                 <li><a href="{{ route('login') }}">Student Login</a> <br>Use <b>Email/Password</b>
                     <i>(student@test.com)</i></li>
             </ul>
+            <hr>
+            <p>Designed By <a href="tel:+254713255791"><b><i>TechGuy</i></b></a></p>
+            <hr>
         </div>
     </div>
 </div>
