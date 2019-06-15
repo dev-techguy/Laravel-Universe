@@ -28,6 +28,7 @@ class User extends Authenticatable {
         'program_id',
         'county_id',
         'name',
+        'age',
         'email',
         'phoneNumber',
         'registrationNumber',

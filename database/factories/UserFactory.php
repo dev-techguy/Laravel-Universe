@@ -31,6 +31,7 @@ $factory->define(User::class, function (Faker $faker) {
         'program_id' => Program::query()->inRandomOrder()->take(1)->first()->id,
         'county_id' => County::query()->inRandomOrder()->take(1)->first()->id,
         'name' => $faker->name('male'),
+        'age' => $faker->numberBetween(16, 40),
         'email' => 'user@test.com',
         'phoneNumber' => $faker->phoneNumber,
         'registrationNumber' => 'LU/' . $faker->numberBetween(1000, 9000) . '/' . substr(date('Y'), 2, 2),

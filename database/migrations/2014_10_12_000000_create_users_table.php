@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration {
             $table->uuid('program_id');
             $table->uuid('county_id');
             $table->string('name');
+            $table->integer('age');
             $table->string('email')->unique();
             $table->string('phoneNumber')->unique();
             $table->string('registrationNumber')->unique();
