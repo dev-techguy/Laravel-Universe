@@ -32,13 +32,13 @@ $factory->define(User::class, function (Faker $faker) {
         'county_id' => County::query()->inRandomOrder()->take(1)->first()->id,
         'name' => $faker->name('male'),
         'age' => $faker->numberBetween(16, 40),
-        'email' => 'user@test.com',
+        'email' => 'student@test.com',
         'phoneNumber' => $faker->phoneNumber,
         'registrationNumber' => 'LU/' . $faker->numberBetween(1000, 9000) . '/' . substr(date('Y'), 2, 2),
         'gender' => 'Male',
         'program_verified' => true,
         'email_verified_at' => now(),
-        'password' => bcrypt('user@test.com'), // password
+        'password' => bcrypt('student@test.com'), // password
         'remember_token' => Str::random(10),
     ];
 });
