@@ -20,6 +20,8 @@ class AdminTableSeeder extends Seeder {
                 'name' => 'admin',
                 'email' => 'admin@test.com',
                 'password' => Hash::make('admin@test.com'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ];
 

@@ -11,6 +11,6 @@ class UsersTableSeeder extends Seeder {
      * @throws Exception
      */
     public function run() {
-        factory(User::class)->create();
+        factory(User::class, 1)->create();
     }
 }

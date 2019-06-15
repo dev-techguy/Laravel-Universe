@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Uuids\Uuids;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,8 +25,13 @@ class User extends Authenticatable {
      * @var array
      */
     protected $fillable = [
+        'county_id',
         'name',
         'email',
+        'phoneNumber',
+        'registrationNumber',
+        'gender',
+        'program_verified',
         'password',
     ];
 
@@ -46,6 +52,7 @@ class User extends Authenticatable {
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'program_verified' => 'boolean',
     ];
 
     /**
@@ -54,5 +61,29 @@ class User extends Authenticatable {
      */
     public function notification() {
         return $this->hasMany(Notification::class);
+    }
+
+    /**
+     * Get the semesterOne here
+     * @return HasMany
+     */
+    public function semester_one() {
+        return $this->hasMany(SemesterOne::class);
+    }
+
+    /**
+     * Get the semesterTwo here
+     * @return HasMany
+     */
+    public function semester_two() {
+        return $this->hasMany(SemesterTwo::class);
+    }
+
+    /**
+     * Get User County Here
+     * @return BelongsTo
+     */
+    public function county() {
+        return $this->belongsTo(County::class);
     }
 }
