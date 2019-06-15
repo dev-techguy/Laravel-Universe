@@ -25,6 +25,7 @@ class User extends Authenticatable {
      * @var array
      */
     protected $fillable = [
+        'program_id',
         'county_id',
         'name',
         'email',
@@ -61,6 +62,14 @@ class User extends Authenticatable {
      */
     public function notification() {
         return $this->hasMany(Notification::class);
+    }
+
+    /**
+     * Get user program here
+     * @return BelongsTo
+     */
+    public function program() {
+        return $this->belongsTo(Program::class);
     }
 
     /**

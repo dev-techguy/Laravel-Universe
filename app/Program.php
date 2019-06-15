@@ -32,4 +32,12 @@ class Program extends Model {
     public function unit() {
         return $this->hasMany(Unit::class);
     }
+
+    /**
+     * Get users
+     * @return HasMany
+     */
+    public function user() {
+        return $this->hasMany(User::class);
+    }
 }
