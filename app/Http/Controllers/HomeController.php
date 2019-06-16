@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\RequestID;
+use App\Unit;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -27,7 +28,10 @@ class HomeController extends Controller {
      * @return Renderable
      */
     public function index() {
-        return view('home');
+        return view('home', [
+            'chart' => 0,
+            'units' => Unit::query()->with('program')->where('program_id', auth()->user()->program_id)->get(),
+        ]);
     }
 
     /**
@@ -80,6 +84,40 @@ class HomeController extends Controller {
         Mv::createSystemNotification(null, auth()->id(), 'Password', 'You have successfully changed your password.');
 
         return redirect()->back()->with('success', 'You have successfully changed your password.');
+    }
+
+    /**
+     * Get results here
+     * @return Factory|View
+     */
+    public function results() {
+        $data = auth()->user()->load('semester_two', 'semester_one');
+        return view('user.results.result', [
+            'ones' => $data->semester_one,
+            'twos' => $data->semester_two,
+        ]);
+    }
+
+    /**
+     * print results
+     * @return Factory|View
+     */
+    public function printResults() {
+        $data = auth()->user()->load('semester_two', 'semester_one');
+        return view('user.results.print-result', [
+            'ones' => $data->semester_one,
+            'twos' => $data->semester_two,
+        ]);
+    }
+
+    /**
+     * Get units for
+     * @return Factory|View
+     */
+    public function units() {
+        return view('user.results.units', [
+            'units' => Unit::query()->with('program')->where('program_id', auth()->user()->program_id)->paginate(config('mv-notification.paginate')),
+        ]);
     }
 
     /**

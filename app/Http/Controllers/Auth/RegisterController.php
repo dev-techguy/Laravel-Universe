@@ -83,7 +83,7 @@ class RegisterController extends Controller {
         ]);
 
         //create system notification here
-        Mv::createSystemNotification(null, $user->id, 'Course Application', 'Hello ' . $user->name . ' we are glad that you have joined as we promise you gonna learn more on laravel. Please be patient as we verify your application.');
+        Mv::createSystemNotification(null, $user->id, 'Welcome to ' . config('app.name'), 'Hello ' . $user->name . ' we are glad that you have joined as we promise you gonna learn more on laravel. Please be patient as we verify your application.');
         Mv::createSystemNotification(1, null, 'New Application', 'Please verify a new registration with reg-number ' . $user->registrationNumber);
 
         return $user;

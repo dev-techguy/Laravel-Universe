@@ -50,7 +50,8 @@ $factory->define(SemesterOne::class, function (Faker $faker) {
         'unit_id' => Unit::query()->inRandomOrder()->where('semesterOne', true)->where('program_id', User::query()->first('program_id')->program_id)->first()->id,
         'catOne' => $faker->numberBetween(1, 30),
         'catTwo' => $faker->numberBetween(1, 30),
-        'mainExam' => $faker->numberBetween(1, 99),
+        'mainExam' => $faker->numberBetween(1, 70),
+        'average' => $faker->numberBetween(1, 100),
     ];
 });
 
@@ -61,7 +62,8 @@ $factory->define(SemesterTwo::class, function (Faker $faker) {
         'unit_id' => Unit::query()->inRandomOrder()->where('semesterOne', true)->where('program_id', User::query()->first('program_id')->program_id)->first()->id,
         'catOne' => $faker->numberBetween(1, 30),
         'catTwo' => $faker->numberBetween(1, 30),
-        'mainExam' => $faker->numberBetween(1, 99),
+        'mainExam' => $faker->numberBetween(1, 70),
+        'average' => $faker->numberBetween(1, 100),
     ];
 });
 

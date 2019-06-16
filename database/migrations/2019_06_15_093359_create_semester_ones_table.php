@@ -18,6 +18,7 @@ class CreateSemesterOnesTable extends Migration {
             $table->double('catOne', 2)->default(0);
             $table->double('catTwo', 2)->default(0);
             $table->double('mainExam', 2)->default(0);
+            $table->double('average', 2)->default(0);
             $table->timestamps();
         });
     }

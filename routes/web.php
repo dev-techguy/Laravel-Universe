@@ -32,6 +32,9 @@ Route::group([
     Route::get('profile', 'HomeController@profile')->name('user.profile');
     Route::get('password', 'HomeController@changePasswordPage')->name('user.change.password');
     Route::post('password', 'HomeController@changePassword')->name('user.change.password');
+    Route::get('results', 'HomeController@results')->name('user.results');
+    Route::get('print-results', 'HomeController@printResults')->name('user..print.results');
+    Route::get('units', 'HomeController@units')->name('user.units');
     Route::get('logout', 'HomeController@logout')->name('user.logout');
 
     /**

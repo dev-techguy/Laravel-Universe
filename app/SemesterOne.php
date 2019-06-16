@@ -27,6 +27,7 @@ class SemesterOne extends Model {
         'catOne',
         'catTwo',
         'mainExam',
+        'average',
     ];
 
     /**

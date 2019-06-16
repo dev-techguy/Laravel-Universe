@@ -36,7 +36,7 @@
                             <hr>
                             <h3 class="profile-username text-center">System Admin</h3>
                             <hr>
-                            <a href="{{ route('admin.logout') }}" class="btn btn-danger btn-block"><b>Sign Out</b></a>
+                            <a href="{{ route('user.logout') }}" class="btn btn-danger btn-block"><b>Sign Out</b></a>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -57,7 +57,7 @@
                                     <!-- Account -->
                                     <div class="post">
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-6">
                                                 <table class="table table-hover table-responsive">
                                                     <tr>
                                                         <td><h3><span class="fa fa-user text-primary"></span></h3></td>
@@ -68,15 +68,59 @@
                                                         </td>
                                                         <td><p>{{ auth()->user()->email }}</p></td>
                                                     </tr>
+                                                    <tr>
+                                                        <td><h3><span class="fa fa-genderless text-primary"></span></h3>
+                                                        </td>
+                                                        <td><p>{{ auth()->user()->gender }}</p></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><h3><span class="fa fa-phone-square text-primary"></span>
+                                                            </h3>
+                                                        </td>
+                                                        <td><p>{{ auth()->user()->phoneNumber }}</p></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><h3><span class="fa fa-graduation-cap text-primary"></span>
+                                                            </h3>
+                                                        </td>
+                                                        <td>
+                                                            @if(auth()->user()->program_verified)
+                                                                <button class="btn btn-success btn-sm" disabled><span
+                                                                        class="fa fa-check"> {{ auth()->user()->program->name }}  Program Verified</span>
+                                                                </button>
+                                                            @else
+                                                                <button class="btn btn-danger btn-sm" disabled><span
+                                                                        class="fa fa-close"> {{ auth()->user()->program->name }}  Program Un-Verified</span>
+                                                                </button>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
                                                 </table>
+                                            </div>
+                                            <div class="col-6">
+                                                <table class="table table-hover table-responsive">
+                                                    <tr>
+                                                        <td><h3><span class="fa fa-university text-primary"></span></h3>
+                                                        </td>
+                                                        <td><p>{{ auth()->user()->registrationNumber }}</p></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><h3><span class="fa fa-location-arrow text-primary"></span>
+                                                            </h3>
+                                                        </td>
+                                                        <td><p>{{ auth()->user()->county->name }}</p></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
                                                 <center>
-                                                    <div class="col-md-6">
-                                                        <hr>
-                                                        <h6 class="text-danger text-bold">Last Login :: <span
-                                                                class="text-black-50">{{ date('F d, Y h:i a', strtotime(auth()->user()->updated_at)) }}</span>
-                                                        </h6>
-                                                        <hr>
-                                                    </div>
+                                                    <hr>
+                                                    <h6 class="text-danger text-bold">Last Login :: <span
+                                                            class="text-black-50">{{ date('F d, Y h:i a', strtotime(auth()->user()->updated_at)) }}</span>
+                                                    </h6>
+                                                    <hr>
                                                 </center>
                                             </div>
                                         </div>

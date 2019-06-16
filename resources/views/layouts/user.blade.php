@@ -164,6 +164,30 @@ $userLatestMails = Mv::latestNotifications();
                         </ul>
                     </li>
 
+                    <li class="nav-item has-treeview">
+                        <a href="index.html#" class="nav-link">
+                            <i class="nav-icon fa fa-file-pdf-o"></i>
+                            <p>
+                                Results
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('user.results') }}" class="nav-link">
+                                    <i class="fa fa-graduation-cap nav-icon"></i>
+                                    <p>Performance</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('user.units') }}" class="nav-link">
+                                    <i class="fa fa-clone nav-icon"></i>
+                                    <p>Units</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="nav-item">
                         <a href="{{ route('user.latest.mailbox') }}" class="nav-link">
                             <i class="fa fa-inbox nav-icon"></i>

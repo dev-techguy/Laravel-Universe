@@ -77,4 +77,35 @@ class SystemController extends Controller {
 
         return [$counties, $programs];
     }
+
+    /**
+     * Get Grades Here
+     */
+    public static function getGrade(float $marks) {
+        if ($marks >= 80 && $marks < 100) {
+            return 'A';
+        } elseif ($marks >= 75 && $marks < 80) {
+            return 'A-';
+        } elseif ($marks >= 70 && $marks < 75) {
+            return 'B+';
+        } elseif ($marks >= 65 && $marks < 70) {
+            return 'B';
+        } elseif ($marks >= 60 && $marks < 65) {
+            return 'B-';
+        } elseif ($marks >= 55 && $marks < 60) {
+            return 'C+';
+        } elseif ($marks >= 50 && $marks < 55) {
+            return 'C';
+        } elseif ($marks >= 45 && $marks < 50) {
+            return 'C-';
+        } elseif ($marks >= 40 && $marks < 45) {
+            return 'D+';
+        } elseif ($marks >= 35 && $marks < 40) {
+            return 'D';
+        } elseif ($marks >= 30 && $marks < 35) {
+            return 'D-';
+        } else {
+            return 'E';
+        }
+    }
 }
