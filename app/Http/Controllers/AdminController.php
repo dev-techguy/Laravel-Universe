@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\IdRequest;
 use App\Http\Requests\RequestID;
+use App\Program;
+use App\Unit;
+use App\User;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -27,7 +30,12 @@ class AdminController extends Controller {
      * @return Factory|View
      */
     public function adminDashBoard() {
-        return view('admin.home');
+        return view('admin.home', [
+            'users' => count(User::all()),
+            'new' => count(User::query()->whereDate('created_at', today())->get()),
+            'programs' => count(Program::all()),
+            'units' => count(Unit::all()),
+        ]);
     }
 
 

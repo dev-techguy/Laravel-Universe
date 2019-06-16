@@ -20,6 +20,7 @@ class HomeController extends Controller {
      */
     public function __construct() {
         $this->middleware('auth');
+        $this->middleware('program')->except('index', 'profile', 'changePasswordPage', 'changePassword', 'latestMailBox', 'readMailBox', 'allMailBox', 'logout');
     }
 
     /**
