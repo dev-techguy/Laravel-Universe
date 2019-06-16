@@ -105,8 +105,10 @@
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right" role="menu">
                                         <a href="{{ route('all.students') }}" class="dropdown-item">Verify Program</a>
-                                        <a href="{{ route('user..print.results') }}" class="dropdown-item"
-                                           target="_blank">Enter Results</a>
+                                        <a href="{{ route('semester.one') }}" class="dropdown-item"
+                                           target="_blank">Enter Semester One Results</a>
+                                        <a href="{{ route('semester.two') }}" class="dropdown-item"
+                                           target="_blank">Enter Semester Two Results</a>
                                     </div>
                                 </div>
                             </div>
