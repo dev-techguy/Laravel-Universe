@@ -162,6 +162,59 @@ $adminLatestMails = Mv::latestNotifications(true);
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview">
+                        <a href="index.html#" class="nav-link">
+                            <i class="nav-icon fa fa-users"></i>
+                            <p>
+                                View Students
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('all.students') }}" class="nav-link">
+                                    <i class="fa fa-graduation-cap nav-icon"></i>
+                                    <p>Students</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('semester.one') }}" class="nav-link">
+                                    <i class="fa fa-plug nav-icon"></i>
+                                    <p>Semester One Marks</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('semester.two') }}" class="nav-link">
+                                    <i class="fa fa-plug nav-icon"></i>
+                                    <p>Semester Two Marks</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="index.html#" class="nav-link">
+                            <i class="nav-icon fa fa-university"></i>
+                            <p>
+                                Data
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('view.programs') }}" class="nav-link">
+                                    <i class="fa fa-graduation-cap nav-icon"></i>
+                                    <p>Programs</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('view.units') }}" class="nav-link">
+                                    <i class="fa fa-graduation-cap nav-icon"></i>
+                                    <p>Units</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.latest.mailbox') }}" class="nav-link">
                             <i class="fa fa-inbox nav-icon"></i>

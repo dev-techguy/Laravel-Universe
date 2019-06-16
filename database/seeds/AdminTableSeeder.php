@@ -17,7 +17,7 @@ class AdminTableSeeder extends Seeder {
         $demoAdmins = [
             [
                 'id' => Uuid::generate()->string,
-                'name' => 'admin',
+                'name' => 'lecturer',
                 'email' => 'lecturer@test.com',
                 'password' => Hash::make('lecturer@test.com'),
                 'created_at' => now(),

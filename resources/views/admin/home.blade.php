@@ -36,7 +36,7 @@
                         <div class="icon">
                             <i class="fa fa-users"></i>
                         </div>
-                        <a href="index.html#" class="small-box-footer">More info <i
+                        <a href="{{ route('all.students') }}" class="small-box-footer">More info <i
                                 class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                         <div class="icon">
                             <i class="fa fa-graduation-cap"></i>
                         </div>
-                        <a href="index.html#" class="small-box-footer">More info <i
+                        <a href="{{ route('all.students') }}" class="small-box-footer">More info <i
                                 class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         <div class="icon">
                             <i class="fa fa-address-book"></i>
                         </div>
-                        <a href="index.html#" class="small-box-footer">More info <i
+                        <a href="{{ route('view.programs') }}" class="small-box-footer">More info <i
                                 class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                         <div class="icon">
                             <i class="fa fa-file-archive-o"></i>
                         </div>
-                        <a href="index.html#" class="small-box-footer">More info <i
+                        <a href="{{ route('view.units') }}" class="small-box-footer">More info <i
                                 class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                                         <i class="fa fa-gear"> Actions</i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                        <a href="{{ route('user.profile') }}" class="dropdown-item">Verify Program</a>
+                                        <a href="{{ route('all.students') }}" class="dropdown-item">Verify Program</a>
                                         <a href="{{ route('user..print.results') }}" class="dropdown-item"
                                            target="_blank">Enter Results</a>
                                     </div>

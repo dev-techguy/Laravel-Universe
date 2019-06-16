@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\IdRequest;
+use App\Http\Requests\MarksRequest;
 use App\Http\Requests\RequestID;
 use App\Program;
+use App\SemesterOne;
+use App\SemesterTwo;
 use App\Unit;
 use App\User;
 use Exception;
@@ -90,6 +93,126 @@ class AdminController extends Controller {
         Mv::createSystemNotification(auth('admin')->id(), null, 'Password', 'You have successfully changed your password.');
 
         return redirect()->back()->with('success', 'You have successfully changed your password.');
+    }
+
+    /**
+     * Admin view all students
+     * @return Factory|View
+     */
+    public function viewAllStudents() {
+        return view('admin.students.student', [
+            'students' => User::query()->with('program')->paginate(config('mv-notification.paginate')),
+        ]);
+    }
+
+    /**
+     * Add semester one program
+     * @return Factory|View
+     */
+    public function semesterOnePage() {
+        return \view('admin.students.one-results', [
+            'ones' => SemesterOne::query()->whereIn('user_id', User::query()->where('program_verified', true)->get())->paginate(config('mv-notification.paginate')),
+        ]);
+    }
+
+    /**
+     * Update marks here
+     * @param MarksRequest $request
+     * @return RedirectResponse
+     */
+    public function semesterOneMarks(MarksRequest $request) {
+        $count = 0;
+        foreach ($request->user_id as $user_id) {
+            SemesterOne::query()->where('user_id', $user_id)->update([
+                'catOne' => $request->catOne[$count],
+                'catTwo' => $request->catTwo[$count],
+                'mainExam' => $request->mainExam[$count],
+                'average' => ($request->catOne[$count] + $request->catTwo[$count] + $request->mainExam[$count]),
+            ]);
+
+            //Increment
+            $count++;
+        }
+
+        return redirect()->back()->with('success', 'Marks updated successfully');
+    }
+
+    /**
+     * Add semester one program
+     * @return Factory|View
+     */
+    public function semesterTwoPage() {
+        return \view('admin.students.two-results', [
+            'twos' => SemesterTwo::query()->whereIn('user_id', User::query()->where('program_verified', true)->get())->paginate(config('mv-notification.paginate')),
+        ]);
+    }
+
+    /**
+     * Update marks here
+     * @param MarksRequest $request
+     * @return RedirectResponse
+     */
+    public function semesterTwoMarks(MarksRequest $request) {
+        $count = 0;
+        foreach ($request->user_id as $user_id) {
+            SemesterTwo::query()->where('user_id', $user_id)->update([
+                'catOne' => $request->catOne[$count],
+                'catTwo' => $request->catTwo[$count],
+                'mainExam' => $request->mainExam[$count],
+                'average' => ($request->catOne[$count] + $request->catTwo[$count] + $request->mainExam[$count]),
+            ]);
+
+            //Increment
+            $count++;
+        }
+
+        return redirect()->back()->with('success', 'Marks updated successfully');
+    }
+
+    /**
+     * Verify student
+     * @param string $id
+     * @return RedirectResponse
+     */
+    public function verify(string $id) {
+        $student = User::query()->with('program')->findOrFail($id);
+        $student->update([
+            'program_verified' => true,
+        ]);
+
+        //create in semester one
+        SemesterOne::query()->create([
+            'unit_id' => $student->program->unit->where('semesterOne', true)->first()->id,
+            'user_id' => $student->id,
+        ]);
+
+        //create in semester two
+        SemesterTwo::query()->create([
+            'unit_id' => $student->program->unit->where('semesterTwo', true)->first()->id,
+            'user_id' => $student->id,
+        ]);
+
+        return redirect()->back()->with('success', $student->name . ' verified successfully.');
+    }
+
+    /**
+     * view programs here
+     * @return Factory|View
+     */
+    public function viewPrograms() {
+        return \view('admin.uni.programs', [
+            'programs' => Program::query()->with('unit', 'user')->inRandomOrder()->paginate(config('mv-notification.paginate')),
+        ]);
+    }
+
+    /**
+     * View all units
+     * @return Factory|View
+     */
+    public function viewUnits() {
+        return \view('admin.uni.units', [
+            'units' => Unit::query()->with('program')->inRandomOrder()->paginate(config('mv-notification.paginate')),
+        ]);
     }
 
 

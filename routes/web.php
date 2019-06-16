@@ -129,6 +129,18 @@ Route::group([
         'as' => 'admin.logout',
     ]);
 
+    //Functions
+    Route::get('view-programs', 'AdminController@viewPrograms')->name('view.programs');
+    Route::get('view-units', 'AdminController@viewUnits')->name('view.units');
+    Route::get('all-students', 'AdminController@viewAllStudents')->name('all.students');
+    Route::get('verify/{id}', 'AdminController@verify')->name('verify');
+
+    //Marks
+    Route::get('one', 'AdminController@semesterOnePage')->name('semester.one');
+    Route::post('one', 'AdminController@semesterOneMarks')->name('semester.one');
+    Route::get('two', 'AdminController@semesterTwoPage')->name('semester.two');
+    Route::post('two', 'AdminController@semesterTwoMarks')->name('semester.two');
+
 
     /**
      * ------------------------
