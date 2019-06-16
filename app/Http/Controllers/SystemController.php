@@ -80,6 +80,8 @@ class SystemController extends Controller {
 
     /**
      * Get Grades Here
+     * @param float $marks
+     * @return string
      */
     public static function getGrade(float $marks) {
         if ($marks >= 80 && $marks < 100) {
