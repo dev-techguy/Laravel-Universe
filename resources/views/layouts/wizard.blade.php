@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-<!-- /Added by HTTrack -->
 <head>
-    <meta charset="utf-8">
-    <title>FormWizard_v1</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="colorlib.com">
+    <title>{{ config('app.name') }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}"/>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', env('APP_NAME')) }}</title>
-
-    <!--favicon-->
-    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
-    <!-- MATERIAL DESIGN ICONIC FONT -->
-    <link rel="stylesheet" href="{{ asset('fonts/material-design-iconic-font/css/material-design-iconic-font.css') }}">
-    <!-- STYLE CSS -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('wizard/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('wizard/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('wizard/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('wizard/fonts/iconic/css/material-design-iconic-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('wizard/vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('wizard/vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('wizard/vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('wizard/vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('wizard/vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('wizard/css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('wizard/css/util.css') }}">
+    <!--===============================================================================================-->
 </head>
-<body>
-<div class="wrapper">
-    @yield('wizard')
-</div>
+<body style="background-color: #999999;">
 
-<!-- JQUERY -->
-<script src="{{ asset('js/jquery-3.3.1.min.js') }}" type="80352ca4ff03bc1728b13968-text/javascript"></script>
-<script src="{{ asset('js/jquery.steps.js') }}" type="80352ca4ff03bc1728b13968-text/javascript"></script>
-<script src="{{ asset('js/main.js') }}" type="80352ca4ff03bc1728b13968-text/javascript"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"
-        type="80352ca4ff03bc1728b13968-text/javascript"></script>
-<script type="80352ca4ff03bc1728b13968-text/javascript">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+@yield('wizard')
 
-  gtag('config', 'UA-23581568-13');
+<!--===============================================================================================-->
+<script src="{{ asset('wizard/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('wizard/vendor/animsition/js/animsition.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('wizard/vendor/bootstrap/js/popper.js') }}"></script>
+<script src="{{ asset('wizard/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('wizard/vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('wizard/vendor/daterangepicker/moment.min.js') }}"></script>
+<script src="{{ asset('wizard/vendor/daterangepicker/daterangepicker.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('wizard/vendor/countdowntime/countdowntime.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('wizard/js/main.js') }}"></script>
 
-
-
-
-
-</script>
-<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js"
-        data-cf-settings="80352ca4ff03bc1728b13968-|49" defer=""></script>
 </body>
 </html>

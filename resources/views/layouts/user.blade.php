@@ -69,13 +69,6 @@ $userLatestMails = Mv::latestNotifications();
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <!-- Help and Support -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-info-circle"></i>
-                    <span class="badge badge-primary navbar-badge">0</span>
-                </a>
-            </li>
             <!-- Messages Notifications -->
             <li class="nav-item dropdown">
                 <a class="nav-link" href="{{ route('user.latest.mailbox') }}">
@@ -86,7 +79,7 @@ $userLatestMails = Mv::latestNotifications();
 
             {{--user profile--}}
             <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
+                <a class="nav-link" data-toggle="dropdown" href="{{ route('home') }}">
                     <i><img src="{{ asset('img/logo.png') }}" alt="" class="img-circle"
                             style="height: 30px;width: 30px;"></i>
                 </a>
@@ -96,7 +89,7 @@ $userLatestMails = Mv::latestNotifications();
                     <div class="dropdown-item">
                         <!-- Message Start -->
                         <div class="clearfix">
-                            <a href="#" class="btn btn-default btn-md pull-left bg-primary"
+                            <a href="{{ route('user.profile') }}" class="btn btn-default btn-md pull-left bg-primary"
                                style="margin-left: 20px; margin-bottom: 20px; margin-top: 20px;"><strong>My
                                     Profile</strong></a>
                             <a href="{{ route('user.logout') }}" class="btn btn-danger btn-md pull-right"
@@ -157,13 +150,13 @@ $userLatestMails = Mv::latestNotifications();
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('user.profile') }}" class="nav-link">
                                     <i class="fa fa-user-circle nav-icon"></i>
                                     <p>Profile</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('user.change.password') }}" class="nav-link">
                                     <i class="fa fa-lock nav-icon"></i>
                                     <p>Change Password</p>
                                 </a>

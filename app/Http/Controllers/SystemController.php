@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\County;
+use App\Program;
 use Carbon\Carbon;
 use Exception;
 use Monolog\Formatter\JsonFormatter;
@@ -53,5 +55,26 @@ class SystemController extends Controller {
         $securityLogger = new Logger($channel);
         $securityLogger->pushHandler($stream);
         $securityLogger->addInfo('info', $log);
+    }
+
+    /**
+     * generate student registration
+     * number
+     * @return string
+     * @throws Exception
+     */
+    public static function generateStudentReg() {
+        return 'LU/' . random_int(1000, 9000) . '/' . substr(date('Y'), 2, 2);
+    }
+
+    /**
+     * Fetch data here
+     * @return array
+     */
+    public static function fetchData() {
+        $counties = County::query()->inRandomOrder()->get();
+        $programs = Program::query()->inRandomOrder()->get();
+
+        return [$counties, $programs];
     }
 }

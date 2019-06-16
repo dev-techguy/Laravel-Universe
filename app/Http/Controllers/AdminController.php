@@ -79,13 +79,7 @@ class AdminController extends Controller {
         $user->password = bcrypt($newPassword);
         $user->update();
 
-        //log this session
-        SystemController::log(
-            [
-                'admin-name' => auth('admin')->user()->name,
-                'description' => 'password changing',
-            ]
-            , 'success', 'admin-password-change');
+        Mv::createSystemNotification(auth('admin')->id(), null, 'Password', 'You have successfully changed your password.');
 
         return redirect()->back()->with('success', 'You have successfully changed your password.');
     }

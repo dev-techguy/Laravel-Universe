@@ -29,6 +29,9 @@ Route::group([
     'prefix' => '/',
 ], function () {
     Route::get('home', 'HomeController@index')->name('home');
+    Route::get('profile', 'HomeController@profile')->name('user.profile');
+    Route::get('password', 'HomeController@changePasswordPage')->name('user.change.password');
+    Route::post('password', 'HomeController@changePassword')->name('user.change.password');
     Route::get('logout', 'HomeController@logout')->name('user.logout');
 
     /**

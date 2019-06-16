@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\RequestID;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use MV\Notification\Mv;
 
@@ -26,6 +28,58 @@ class HomeController extends Controller {
      */
     public function index() {
         return view('home');
+    }
+
+    /**
+     * Get user profile here
+     * @return Factory|View
+     */
+    public function profile() {
+        return view('user.account.profile');
+    }
+
+    /**
+     * Credentials update
+     * @return Factory|View
+     */
+    public function changePasswordPage() {
+        return view('user.account.change_password');
+    }
+
+    /**
+     * Credentials update
+     * @param ChangePasswordRequest $request
+     * @return Factory|View
+     */
+    public function changePassword(ChangePasswordRequest $request) {
+        // Extract the request data.
+        $password = $request->currentPassword;
+        $newPassword = $request->newPassword;
+        $confirmPassword = $request->confirmPassword;
+
+        // Get the current password
+        $currentPassword = auth()->user()->password;
+        // Check if current password matches the sent password.
+        if (!Hash::check($password, $currentPassword)) {
+            return redirect()->back()->with('error', 'The entered password does not match our records.');
+        }
+        // Check if new password matches current password.
+        if (strcmp($newPassword, $password) === 0) {
+            return redirect()->back()->with('error', 'New password cannot be same as your current password.');
+        }
+        // Check if the new password matches the confirmation password.
+        if (strcmp($newPassword, $confirmPassword) !== 0) {
+            return redirect()->back()->with('error', 'The confirmation password does not match.');
+        }
+
+        // Get the current auth user and update their password.
+        $user = auth()->user();
+        $user->password = bcrypt($newPassword);
+        $user->update();
+
+        Mv::createSystemNotification(null, auth()->id(), 'Password', 'You have successfully changed your password.');
+
+        return redirect()->back()->with('success', 'You have successfully changed your password.');
     }
 
     /**

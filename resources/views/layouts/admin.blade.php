@@ -68,13 +68,6 @@ $adminLatestMails = Mv::latestNotifications(true);
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <!-- Help and Support -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-info-circle"></i>
-                    <span class="badge badge-primary navbar-badge">0</span>
-                </a>
-            </li>
             <!-- Messages Notifications -->
             <li class="nav-item dropdown">
                 <a class="nav-link" href="{{ route('admin.latest.mailbox') }}">
@@ -156,13 +149,13 @@ $adminLatestMails = Mv::latestNotifications(true);
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('admin.profile') }}" class="nav-link">
                                     <i class="fa fa-user-circle nav-icon"></i>
                                     <p>Profile</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('admin.password') }}" class="nav-link">
                                     <i class="fa fa-lock nav-icon"></i>
                                     <p>Change Password</p>
                                 </a>
