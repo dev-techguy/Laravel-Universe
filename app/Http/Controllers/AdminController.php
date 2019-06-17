@@ -126,7 +126,7 @@ class AdminController extends Controller {
                 'catOne' => $request->catOne[$count],
                 'catTwo' => $request->catTwo[$count],
                 'mainExam' => $request->mainExam[$count],
-                'average' => ($request->catOne[$count] + $request->catTwo[$count] + $request->mainExam[$count]),
+                'average' => ((($request->catOne[$count] + $request->catTwo[$count]) / 2) + $request->mainExam[$count]),
             ]);
 
             //Increment
@@ -158,7 +158,7 @@ class AdminController extends Controller {
                 'catOne' => $request->catOne[$count],
                 'catTwo' => $request->catTwo[$count],
                 'mainExam' => $request->mainExam[$count],
-                'average' => ($request->catOne[$count] + $request->catTwo[$count] + $request->mainExam[$count]),
+                'average' => ((($request->catOne[$count] + $request->catTwo[$count]) / 2) + $request->mainExam[$count]),
             ]);
 
             //Increment
