@@ -29,7 +29,7 @@ class County extends Model {
      * Get the user here
      * @return HasMany
      */
-    public function user() {
+    public function user(): HasMany {
         return $this->hasMany(User::class);
     }
 }

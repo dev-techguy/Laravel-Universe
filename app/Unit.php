@@ -41,7 +41,7 @@ class Unit extends Model {
      * Get the semesterOne here
      * @return HasMany
      */
-    public function semester_one() {
+    public function semester_one(): HasMany {
         return $this->hasMany(SemesterOne::class);
     }
 
@@ -49,7 +49,7 @@ class Unit extends Model {
      * Get the semesterTwo here
      * @return HasMany
      */
-    public function semester_two() {
+    public function semester_two(): HasMany {
         return $this->hasMany(SemesterTwo::class);
     }
 }

@@ -34,7 +34,7 @@ class SemesterOne extends Model {
      * Get the unit here
      * @return BelongsTo
      */
-    public function unit() {
+    public function unit(): BelongsTo {
         return $this->belongsTo(Unit::class);
     }
 
@@ -42,7 +42,7 @@ class SemesterOne extends Model {
      * Get the user here
      * @return BelongsTo
      */
-    public function user() {
+    public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }
 }

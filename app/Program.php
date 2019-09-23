@@ -29,7 +29,7 @@ class Program extends Model {
      * Get the unit here
      * @return HasMany
      */
-    public function unit() {
+    public function unit(): HasMany {
         return $this->hasMany(Unit::class);
     }
 
@@ -37,7 +37,7 @@ class Program extends Model {
      * Get users
      * @return HasMany
      */
-    public function user() {
+    public function user(): HasMany {
         return $this->hasMany(User::class);
     }
 }

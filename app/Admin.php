@@ -43,7 +43,7 @@ class Admin extends Authenticatable {
      * get admin notification
      * @return HasMany
      */
-    public function notification() {
+    public function notification(): HasMany {
         return $this->hasMany(Notification::class);
     }
 }
